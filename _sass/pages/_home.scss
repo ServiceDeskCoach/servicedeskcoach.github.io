@@ -2,7 +2,6 @@
 @use '../abstracts/breakpoints' as bp;
 @use '../abstracts/placeholders';
 
-/* Post List */
 #post-list {
   margin-top: 2rem;
 
@@ -24,7 +23,6 @@
     border: 0;
     background: none;
 
-    /* Image Radius Placeholder */
     %img-radius {
       border-radius: v.$radius-lg v.$radius-lg 0 0;
 
@@ -51,11 +49,11 @@
 
       .card-title {
         @extend %text-clip;
+
         color: var(--heading-color) !important;
         font-size: 1.25rem;
       }
 
-      /* Muted Text Placeholder */
       %muted {
         color: var(--text-muted-color) !important;
       }
@@ -70,6 +68,7 @@
 
           p {
             @extend %text-clip;
+
             line-height: 1.5;
             margin: 0;
           }
@@ -91,19 +90,20 @@
 
         em {
           @extend %normal-font-style;
+
           color: inherit;
         }
 
         > div:first-child {
           display: block;
+
           @extend %text-ellipsis;
         }
       }
-    } /* .card-body */
-  } /* .card */
+    }
+  }
 } /* #post-list */
 
-/* Pagination */
 .pagination {
   color: var(--text-color);
   font-family: Lato, sans-serif;
@@ -132,23 +132,28 @@
     }
 
     .page-link {
-      color: var(--btn-paginator-text-color);
+      color: var(--btn-patinator-text-color);
       padding: 0 0.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: -webkit-box;
+      -webkit-box-pack: center;
+      -webkit-box-align: center;
       border-radius: 0.5rem;
       border: 0;
       background-color: inherit;
-      transition: box-shadow 0.2s ease-in-out;
     }
 
-    &.active .page-link {
-      background-color: var(--btn-paginator-hover-color);
+    &.active {
+      .page-link {
+        background-color: var(--btn-paginator-hover-color);
+      }
     }
 
-    &:not(.active) .page-link:hover {
-      box-shadow: inset var(--btn-border-color) 0 0 0 1px;
+    &:not(.active) {
+      .page-link {
+        &:hover {
+          box-shadow: inset var(--btn-border-color) 0 0 0 1px;
+        }
+      }
     }
 
     &.disabled {
