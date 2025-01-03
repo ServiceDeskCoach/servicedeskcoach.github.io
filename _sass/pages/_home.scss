@@ -1,173 +1,97 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/breakpoints' as bp;
+@use '../abstracts/mixins' as mx;
 @use '../abstracts/placeholders';
 
-#post-list {
-  margin-top: 2rem;
+/* Home Page Layout */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 2rem 1rem;
+  text-align: center;
+}
 
-  @include bp.lg {
-    margin-top: 2.5rem;
-  }
+/* Hero Section */
+.hero {
+  position: relative;
+  z-index: 2;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  max-width: 600px;
+  margin: auto;
+}
 
-  .card-wrapper {
-    &:hover {
-      text-decoration: none;
-    }
+.hero img.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-    &:not(:last-child) {
-      margin-bottom: 1.25rem;
-    }
-  }
+/* Fix Sidebar Overlap */
+#sidebar-wrapper {
+  z-index: 1;
+  position: fixed;
+  height: 100vh;
+}
 
-  .card {
-    border: 0;
-    background: none;
+/* Social Links */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
 
-    %img-radius {
-      border-radius: v.$radius-lg v.$radius-lg 0 0;
-
-      @include bp.md {
-        border-radius: 0 v.$radius-lg v.$radius-lg 0;
-      }
-    }
-
-    .preview-img {
-      @extend %img-radius;
-
-      img {
-        @extend %img-radius;
-      }
-    }
-
-    .card-body {
-      height: 100%;
-      padding: 1rem;
-
-      @include bp.md {
-        padding: 1.75rem 1.75rem 1.25rem;
-      }
-
-      .card-title {
-        @extend %text-clip;
-
-        color: var(--heading-color) !important;
-        font-size: 1.25rem;
-      }
-
-      %muted {
-        color: var(--text-muted-color) !important;
-      }
-
-      .card-text {
-        @include bp.md {
-          display: inherit !important;
-        }
-
-        &.content {
-          @extend %muted;
-
-          p {
-            @extend %text-clip;
-
-            line-height: 1.5;
-            margin: 0;
-          }
-        }
-      }
-
-      .post-meta {
-        @extend %muted;
-
-        i {
-          &:not(:first-child) {
-            margin-left: 1.5rem;
-
-            @include bp.md {
-              margin-left: 1.75rem;
-            }
-          }
-        }
-
-        em {
-          @extend %normal-font-style;
-
-          color: inherit;
-        }
-
-        > div:first-child {
-          display: block;
-
-          @extend %text-ellipsis;
-        }
-      }
-    }
-  }
-} /* #post-list */
-
-.pagination {
+.social-links a {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
   color: var(--text-color);
-  font-family: Lato, sans-serif;
-  justify-content: space-evenly;
+  transition: color 0.3s ease, transform 0.3s ease;
 
-  @include bp.lg {
-    font-size: 0.85rem;
-    justify-content: center;
+  &:hover {
+    color: var(--link-hover);
+    transform: scale(1.1);
   }
+}
 
-  a:hover {
-    text-decoration: none;
+/* Fix Post List Layout */
+#post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Blog Card */
+.card-wrapper {
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
+}
 
-  .page-item {
-    @include bp.lt(bp.get(lg)) {
-      &:not(:first-child):not(:last-child) {
-        display: none;
-      }
-    }
+/* Fix Post Hover Effects */
+.post-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-    @include bp.lg {
-      &:not(:last-child) {
-        margin-right: 0.7rem;
-      }
-    }
-
-    .page-link {
-      color: var(--btn-patinator-text-color);
-      padding: 0 0.6rem;
-      display: -webkit-box;
-      -webkit-box-pack: center;
-      -webkit-box-align: center;
-      border-radius: 0.5rem;
-      border: 0;
-      background-color: inherit;
-    }
-
-    &.active {
-      .page-link {
-        background-color: var(--btn-paginator-hover-color);
-      }
-    }
-
-    &:not(.active) {
-      .page-link {
-        &:hover {
-          box-shadow: inset var(--btn-border-color) 0 0 0 1px;
-        }
-      }
-    }
-
-    &.disabled {
-      cursor: not-allowed;
-
-      .page-link {
-        color: rgba(108, 117, 125, 0.57);
-      }
-    }
-  } /* .page-item */
-
-  .page-index {
-    @include bp.lg {
-      display: none;
-    }
-  }
+/* Fix Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
 }
