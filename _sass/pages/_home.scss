@@ -5,89 +5,97 @@
 
 /* --- Hero Section --- */
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem 3rem;
+  position: relative;
+  z-index: 2;
   background: var(--card-bg);
-  border-radius: 16px;
+  padding: 1.5rem 2rem;  /* Reduced padding */
+  border-radius: 12px;
   box-shadow: var(--card-shadow);
-  max-width: 900px;  /* Wider layout */
+  max-width: 750px;  /* Increased width */
+  width: 90%;  /* Make it more responsive */
   margin: auto;
-  text-align: left;
-  
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+
   @include bp.md {
-    max-width: 750px;
-    gap: 1.5rem;
+    max-width: 650px;
   }
 
   @include bp.lg {
-    max-width: 900px;
+    max-width: 750px;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
   }
 }
 
-/* --- Avatar Box --- */
-.hero .avatar-box {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  border-radius: 20%;
-  background: linear-gradient(135deg, #007aff, #ff00ff); /* Gradient effect */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+/* --- Remove Shimmer Effect --- */
+.shimmer, .hero {
+  background: var(--card-bg) !important;
+  animation: none !important;
+
+  &::before {
+    background: none !important;
+    animation: none !important;
+  }
 }
 
+/* --- Avatar Styling --- */
 .hero img.avatar {
-  width: 140px;
-  height: 140px;
+  width: 100px;  /* Reduced size */
+  height: 100px;
   border-radius: 20%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease-in-out;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
-/* --- Name & Title --- */
-.hero-content {
-  flex-grow: 1;
-}
-
-.hero-content h1 {
-  font-size: 2rem;
+/* --- Name Styling --- */
+.hero h1 {
+  font-size: 1.8rem; /* Reduced size slightly */
   font-weight: bold;
   color: var(--text-color);
-  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
-.hero-content p {
-  font-size: 1.1rem;
-  color: var(--text-muted-color);
-  margin-bottom: 0.75rem;
-}
-
-/* --- Location & Languages --- */
-.hero-content .details {
-  display: flex;
-  gap: 1rem;
+/* --- Job Title Styling --- */
+.hero p {
   font-size: 1rem;
   color: var(--text-muted-color);
-  align-items: center;
-  margin-bottom: 1rem;
 }
 
-/* --- Social Icons --- */
+/* --- Location & Language Icons --- */
+.hero .details {
+  font-size: 0.95rem;
+  color: var(--text-muted-color);
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+/* --- Social Links --- */
 .social-links {
   display: flex;
   gap: 0.8rem;
+  justify-content: center;
+  margin-top: 0.8rem;
 }
 
 .social-links a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   background: var(--card-bg);
   border-radius: 50%;
   box-shadow: var(--card-shadow);
@@ -99,7 +107,7 @@
   }
 
   i {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: var(--text-color);
   }
 }
@@ -108,16 +116,14 @@
 .hero .buttons {
   display: flex;
   gap: 1rem;
-  justify-content: left;
+  justify-content: center;
   margin-top: 1rem;
 }
 
 .hero .buttons a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.95rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   border-radius: 10px;
   text-align: center;
   background: var(--btn-bg);
@@ -129,9 +135,5 @@
   &:hover {
     background: var(--btn-hover-bg);
     transform: scale(1.05);
-  }
-
-  i {
-    font-size: 1.1rem;
   }
 }
