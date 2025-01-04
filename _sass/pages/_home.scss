@@ -1,101 +1,106 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/breakpoints' as bp;
-@use '../abstracts/mixins' as mx;
 @use '../abstracts/placeholders';
+@use '../abstracts/mixins' as mx;
 
-/* --- Hero Section --- */
 .hero {
-  position: relative;
-  z-index: 2;
-  background: var(--card-bg);
-  padding: 1.5rem 2rem;  /* Reduced padding */
-  border-radius: 12px;
-  box-shadow: var(--card-shadow);
-  max-width: 750px;  /* Increased width */
-  width: 90%;  /* Make it more responsive */
-  margin: auto;
-  text-align: center;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  transition: all 0.3s ease-in-out;
+  gap: 2rem;
+  padding: 2rem 3rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  max-width: 850px;
+  margin: auto;
+  text-align: left;
+  flex-wrap: wrap;
+  justify-content: center;
 
   @include bp.md {
-    max-width: 650px;
+    max-width: 750px;
+    gap: 1.5rem;
   }
 
   @include bp.lg {
-    max-width: 750px;
-  }
-
-  &:hover {
-    transform: translateY(-3px);
+    max-width: 900px;
   }
 }
 
-/* --- Remove Shimmer Effect --- */
-.shimmer, .hero {
-  background: var(--card-bg) !important;
-  animation: none !important;
+/* Avatar Box */
+.hero .avatar-box {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease-in-out;
 
-  &::before {
-    background: none !important;
-    animation: none !important;
-  }
-}
-
-/* --- Avatar Styling --- */
-.hero img.avatar {
-  width: 100px;  /* Reduced size */
-  height: 100px;
-  border-radius: 20%;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease-in-out;
-  
   &:hover {
     transform: scale(1.05);
   }
 }
 
-/* --- Name Styling --- */
-.hero h1 {
-  font-size: 1.8rem; /* Reduced size slightly */
+.hero .avatar-box img {
+  width: 110px;
+  height: 110px;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Ensure shimmer effect is removed */
+.hero .avatar-box.shimmer {
+  background: none !important;
+  animation: none !important;
+}
+
+.hero-content {
+  flex-grow: 1;
+  max-width: 500px;
+}
+
+/* Name & Title */
+.hero-content h1 {
+  font-size: 2rem;
   font-weight: bold;
   color: var(--text-color);
-  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-/* --- Job Title Styling --- */
-.hero p {
-  font-size: 1rem;
+.hero-content p {
+  font-size: 1.1rem;
   color: var(--text-muted-color);
+  margin-bottom: 0.75rem;
 }
 
-/* --- Location & Language Icons --- */
-.hero .details {
-  font-size: 0.95rem;
-  color: var(--text-muted-color);
+/* Location & Languages */
+.hero-content .details {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  font-size: 1rem;
+  color: var(--text-muted-color);
   align-items: center;
-  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-/* --- Social Links --- */
+/* Social Icons */
 .social-links {
   display: flex;
   gap: 0.8rem;
-  justify-content: center;
-  margin-top: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .social-links a {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   background: var(--card-bg);
   border-radius: 50%;
   box-shadow: var(--card-shadow);
@@ -107,23 +112,25 @@
   }
 
   i {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--text-color);
   }
 }
 
-/* --- Buttons for Mentoring & Training --- */
+/* Buttons */
 .hero .buttons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: left;
   margin-top: 1rem;
 }
 
 .hero .buttons a {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
   border-radius: 10px;
   text-align: center;
   background: var(--btn-bg);
@@ -135,5 +142,47 @@
   &:hover {
     background: var(--btn-hover-bg);
     transform: scale(1.05);
+  }
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+/* Fix Sidebar & Menu */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: var(--sidebar-bg);
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: var(--card-shadow);
+}
+
+.sidebar .menu {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sidebar .menu a {
+  padding: 0.75rem;
+  color: var(--text-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: var(--btn-hover-bg);
+    border-radius: 5px;
   }
 }
