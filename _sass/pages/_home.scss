@@ -3,6 +3,7 @@
 @use '../abstracts/placeholders';
 @use '../abstracts/mixins' as mx;
 
+/* Hero Section */
 .hero {
   display: flex;
   align-items: center;
@@ -13,7 +14,7 @@
   box-shadow: var(--card-shadow);
   max-width: 850px;
   margin: auto;
-  text-align: left;
+  text-align: center; /* Ensures proper centering on all screen sizes */
   flex-wrap: wrap;
   justify-content: center;
 
@@ -30,9 +31,9 @@
 /* Avatar Box */
 .hero .avatar-box {
   position: relative;
-  width: 120px;
-  height: 120px;
-  border-radius: 15px;
+  width: 130px; /* Increased size for better proportion */
+  height: 130px;
+  border-radius: 50%; /* Circular look */
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -47,9 +48,10 @@
 }
 
 .hero .avatar-box img {
-  width: 110px;
-  height: 110px;
-  border-radius: 15px;
+  width: 130px; /* Match avatar box */
+  height: 130px;
+  object-fit: cover; /* Ensures no distortion */
+  border-radius: 50%; /* Fully circular */
   transition: all 0.3s ease-in-out;
 }
 
@@ -59,9 +61,15 @@
   animation: none !important;
 }
 
+/* Hero Content */
 .hero-content {
   flex-grow: 1;
   max-width: 500px;
+  text-align: left; /* Align text left while avatar stays centered */
+  
+  @include bp.md {
+    text-align: center; /* Center content on smaller screens */
+  }
 }
 
 /* Name & Title */
@@ -81,10 +89,12 @@
 /* Location & Languages */
 .hero-content .details {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   font-size: 1rem;
   color: var(--text-muted-color);
   align-items: center;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 
@@ -92,6 +102,7 @@
 .social-links {
   display: flex;
   gap: 0.8rem;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 
@@ -121,8 +132,9 @@
 .hero .buttons {
   display: flex;
   gap: 1rem;
-  justify-content: left;
+  justify-content: center;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .hero .buttons a {
@@ -149,7 +161,7 @@
   }
 }
 
-/* Fix Sidebar & Menu */
+/* Sidebar & Menu */
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -184,5 +196,25 @@
   &:hover {
     background: var(--btn-hover-bg);
     border-radius: 5px;
+  }
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .hero .avatar-box {
+    margin-bottom: 1rem;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
   }
 }
