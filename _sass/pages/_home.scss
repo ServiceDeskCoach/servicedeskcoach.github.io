@@ -19,6 +19,7 @@
   text-align: center;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 2rem; /* Adjust for better spacing */
   
   @include bp.md {
     max-width: 750px;
