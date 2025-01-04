@@ -1,0 +1,43 @@
+---
+title: "Improve Your IT Service Desk: Coaching & Optimization"
+date: YYYY-MM-DD HH:MM:SS +0100
+categories: [IT Service Management, Coaching]
+tags: [ITIL, Service Desk, Knowledge Management, Consulting]
+pin: true
+comments: true
+published: true
+author: Vincent Veldkamp
+image:
+  path: /assets/images/avatar.png
+  alt: "Service Desk Coaching"
+---
+
+## Why Your IT Service Desk Needs a Boost
+
+Many organizations struggle with **inefficient service desks**, inconsistent knowledge sharing, and poor customer satisfaction.  
+That’s where **expert coaching and process optimization** come in.
+
+🚀 **I specialize in:**
+- **Service Desk Coaching** – Training teams to **handle requests efficiently**.
+- **ITIL Best Practices** – Aligning processes with industry standards.
+- **Knowledge Centered Support (KCS)** – Improving documentation and self-service.
+- **Quality & Change Management** – Implementing sustainable improvements.
+
+## My Approach
+
+🔍 **Quick Wins & Long-Term Growth**  
+I offer **practical solutions** tailored to your company’s needs:
+1. **One-Hour Consultation** – Get immediate advice on pressing issues.
+2. **In-Depth Assessment** – Identify inefficiencies and create an action plan.
+3. **Full Service Desk Transformation** – End-to-end coaching, training, and optimization.
+
+## Let's Talk
+
+📅 Want to discuss how I can help? Book a **free discovery call** today.  
+🔗 [Schedule a Consultation](/coaching)
+
+---
+
+**💬 I’d love to hear your thoughts!**  
+Comment below or connect with me on [LinkedIn](https://linkedin.com).
+
